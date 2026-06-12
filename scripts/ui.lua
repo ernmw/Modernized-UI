@@ -256,6 +256,7 @@ local screen = {
 		anchor = v2(0, 0),
 		relativePosition = v2(0, 0),
 		visible = true,
+		alpha = 1,
 	},
 	content = ui.content {
 		{	
@@ -739,5 +740,9 @@ return {
 
 	eventHandlers = {
 		SendCombatData = sendCombatData,
+		HUDTransparencyChange = function(data)
+			screen.props.alpha = data.alpha
+			hud:update()
+		end,
 	}
 }
